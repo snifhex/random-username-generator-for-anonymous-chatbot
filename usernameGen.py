@@ -1,19 +1,30 @@
+import os
+import csv
 import random
 
-
-file = open("name.txt", "a+")
-nameList = []
-
-try:
+def generatorCore():
+    nameList = []
     while True:
-        randomName= ''
-        for i in range(6):
-            word=random.randrange(97,123)
-            randomName = randomName+chr(word)
+        randomName = ''
+        ''.join([randomName+chr(random.randrange(97,123)) for i in range(6)])
         if not randomName in nameList:
-            print (randomName)
-            file.write(randomName+"\n")
-except:
-    file.close()
+            print(randomName)
+            
 
-file.close()
+def csv_writer(name):
+        if os.path.isfile('names.csv'):
+            with open('names.csv', 'a+') as doc:
+                writer = csv.writer(doc)
+                writer.writerow((name))
+        else:
+            with open('names.csv', 'w') as doc:
+                writer = csv.writer(doc)
+                writer.writerow(('name'))
+
+def main():
+    generatorCore()
+
+if __name__ == '__main__':
+    main()
+
+
