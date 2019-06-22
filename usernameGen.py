@@ -6,20 +6,21 @@ def generatorCore():
     nameList = []
     while True:
         randomName = ''
-        ''.join([randomName+chr(random.randrange(97,123)) for i in range(6)])
+        randomName = ''.join([randomName+chr(random.randrange(97,123)) for i in range(6)])
         if not randomName in nameList:
             print(randomName)
+            csv_writer(randomName)
             
 
 def csv_writer(name):
         if os.path.isfile('names.csv'):
-            with open('names.csv', 'a+') as doc:
+            with open('names.csv', 'a') as doc:
                 writer = csv.writer(doc)
-                writer.writerow((name))
+                writer.writerow((name,))
         else:
             with open('names.csv', 'w') as doc:
                 writer = csv.writer(doc)
-                writer.writerow(('name'))
+                writer.writerow(('name',))
 
 def main():
     generatorCore()
