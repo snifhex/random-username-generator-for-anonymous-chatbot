@@ -21,6 +21,7 @@ def csv_writer(name):
             with open('names.csv', 'w') as doc:
                 writer = csv.writer(doc)
                 writer.writerow(('name',))
+                writer.writerow((name,)
 
 def main():
     generatorCore()
