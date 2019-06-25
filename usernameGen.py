@@ -5,7 +5,7 @@ import random
 def generatorCore():
     nameList = []
     while True:
-        randomName = ''
+#         randomName = ''
         randomName = ''.join([randomName+chr(random.randrange(97,123)) for i in range(6)])
         if not randomName in nameList:
             print(randomName)
